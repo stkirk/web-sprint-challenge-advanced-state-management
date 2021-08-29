@@ -1,9 +1,41 @@
+import {
+  FETCH_SMURFS_FAILURE,
+  FETCH_SMURFS_START,
+  FETCH_SMURFS_SUCCESS,
+  ADD_SMURF,
+  SET_ERROR,
+} from "../actions";
 
 export const initialState = {
-}
+  smurfs: [],
+  loading: false,
+  error: "",
+  errorMessage: "",
+};
+// note: I wanted to name errorMessage and associated actions/reducer cases validationError and setValidationError to avoid confusion with the axios error slice of state, but the MVP instructions specifically asked it to be named errorMessage
 
-const reducer = ()=>{
-}
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case FETCH_SMURFS_START:
+      return { ...state, loading: true };
+    case FETCH_SMURFS_SUCCESS:
+      return { ...state, loading: false, smurfs: action.payload };
+    case FETCH_SMURFS_FAILURE:
+      return { ...state, loading: false, error: action.payload };
+    case ADD_SMURF:
+      return {
+        ...state,
+        smurfs: [...state.smurfs, action.payload],
+      };
+    case SET_ERROR:
+      return {
+        ...state,
+        errorMessage: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
 //**************DO NOT EDIT ANY CODE BEYOND THIS POINT**************//
 export default reducer;
