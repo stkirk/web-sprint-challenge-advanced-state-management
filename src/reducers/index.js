@@ -16,9 +16,9 @@ const reducer = (state = initialState, action) => {
     case FETCH_SMURFS_START:
       return { ...state, loading: true };
     case FETCH_SMURFS_SUCCESS:
-      return { ...state, loading: false };
+      return { ...state, loading: false, smurfs: action.payload };
     case FETCH_SMURFS_FAILURE:
-      return { ...state, loading: false };
+      return { ...state, loading: false, error: action.payload };
     default:
       return state;
   }
