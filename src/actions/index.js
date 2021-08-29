@@ -3,6 +3,7 @@ import axios from "axios";
 export const FETCH_SMURFS_START = "FETCH_SMURFS_START";
 export const FETCH_SMURFS_SUCCESS = "FETCH_SMURFS_SUCCESS";
 export const FETCH_SMURFS_FAILURE = "FETCH_SMURFS_FAILURE";
+export const ADD_SMURF = "ADD_SMURF";
 
 export const fetchSmurfs = () => (dispatch) => {
   dispatch({ type: FETCH_SMURFS_START });
@@ -17,6 +18,13 @@ export const fetchSmurfs = () => (dispatch) => {
       console.log("ERR: ", err);
       dispatch({ type: FETCH_SMURFS_FAILURE, payload: err });
     });
+};
+
+export const addSmurf = (newSmurf) => {
+  return {
+    type: ADD_SMURF,
+    payload: newSmurf,
+  };
 };
 
 //Task List:

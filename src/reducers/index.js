@@ -2,15 +2,16 @@ import {
   FETCH_SMURFS_FAILURE,
   FETCH_SMURFS_START,
   FETCH_SMURFS_SUCCESS,
+  ADD_SMURF,
 } from "../actions";
 
 export const initialState = {
   smurfs: [],
   loading: false,
   error: "",
+  errorMessage: "",
 };
 
-//need to add payload to state in succcess/failure
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SMURFS_START:
@@ -19,6 +20,11 @@ const reducer = (state = initialState, action) => {
       return { ...state, loading: false, smurfs: action.payload };
     case FETCH_SMURFS_FAILURE:
       return { ...state, loading: false, error: action.payload };
+    case ADD_SMURF:
+      return {
+        ...state,
+        smurfs: [...state.smurfs, action.payload],
+      };
     default:
       return state;
   }
