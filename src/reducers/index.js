@@ -12,6 +12,7 @@ export const initialState = {
   error: "",
   errorMessage: "",
 };
+// note: I wanted to name errorMessage and associated actions/reducer cases validationError and setValidationError to avoid confusion with the axios error slice of state, but the MVP instructions specifically asked it to be named errorMessage
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
