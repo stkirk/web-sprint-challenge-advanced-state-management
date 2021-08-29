@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { connect } from "react-redux";
 import { addSmurf, setError } from "../actions";
 
 const AddForm = (props) => {
   const initialFormState = {
-    id: "",
+    id: uuidv4(),
     name: "",
     position: "",
     nickname: "",
