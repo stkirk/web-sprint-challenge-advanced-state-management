@@ -3,6 +3,7 @@ import {
   FETCH_SMURFS_START,
   FETCH_SMURFS_SUCCESS,
   ADD_SMURF,
+  SET_ERROR,
 } from "../actions";
 
 export const initialState = {
@@ -24,6 +25,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         smurfs: [...state.smurfs, action.payload],
+      };
+    case SET_ERROR:
+      return {
+        ...state,
+        errorMessage: "Name, position and nickname fields are required.",
       };
     default:
       return state;
