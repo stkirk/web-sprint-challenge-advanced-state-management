@@ -17,7 +17,10 @@ export const fetchSmurfs = () => (dispatch) => {
     })
     .catch((err) => {
       console.log("ERR: ", err);
-      dispatch({ type: FETCH_SMURFS_FAILURE, payload: err });
+      dispatch({
+        type: FETCH_SMURFS_FAILURE,
+        payload: "Error, smurfs unavailible",
+      });
     });
 };
 
@@ -28,9 +31,10 @@ export const addSmurf = (newSmurf) => {
   };
 };
 
-export const setError = () => {
+export const setError = (err) => {
   return {
     type: SET_ERROR,
+    payload: err,
   };
 };
 

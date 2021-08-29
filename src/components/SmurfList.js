@@ -18,9 +18,11 @@ const SmurfList = (props) => {
 
   return (
     <div className="listContainer">
-      {props.smurfs.map((smurf) => (
-        <Smurf key={smurf.id} smurf={smurf} />
-      ))}
+      {props.error ? (
+        <h1>{props.error}</h1>
+      ) : (
+        props.smurfs.map((smurf) => <Smurf key={smurf.id} smurf={smurf} />)
+      )}
     </div>
   );
 };
@@ -29,6 +31,7 @@ const mapStateToProps = (state) => {
   return {
     loading: state.loading,
     smurfs: state.smurfs,
+    error: state.error,
   };
 };
 
